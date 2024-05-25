@@ -42,6 +42,26 @@ class DatabasePopulator
         some_tutorials: 2,
         many_tutorials: 4,
         max_tutorials: 20
+      },
+      massive: {
+        min_students: 1000,
+        delta_students: 100,
+        few_tasks: 100,
+        some_tasks: 100,
+        many_tasks: 100,
+        few_tutorials: 12,
+        some_tutorials: 12,
+        many_tutorials: 12,
+        max_tutorials: 50
+        # min_students: 1000,
+        # delta_students: 100,
+        # few_tasks: 25,
+        # some_tasks: 100,
+        # many_tasks: 100,
+        # few_tutorials: 2,
+        # some_tutorials: 4,
+        # many_tutorials: 4,
+        # max_tutorials: 50
       }
     }
     accepted_scale_types = scale_data.keys
@@ -317,63 +337,63 @@ class DatabasePopulator
     many_tasks     = @scale[:many_tasks]
     few_tasks      = @scale[:few_tasks]
     @unit_data = {
-      intro_prog: {
-        code: "COS10001",
-        name: "Introduction to Programming",
-        convenors: [:acain, :aconvenor],
-        teaching_period: TeachingPeriod.first,
-        tutors: [
-          { user: :acain, num: many_tutorials },
-          { user: :aconvenor, num: many_tutorials },
-          { user: :ajones, num: many_tutorials },
-          { user: :rwilson, num: many_tutorials },
-          { user: :acummaudo, num: some_tutorials },
-          { user: :atutor, num: many_tutorials },
-          { user: :joostfunkekupper, num: many_tutorials },
-          { user: :angusmorton, num: some_tutorials },
-          { user: :cliff, num: some_tutorials },
-        ],
-        students: [],
-        num_tasks: some_tasks,
-        ilos: Faker::Number.between(from: 1, to: 3),
-      },
+      # intro_prog: {
+      #   code: "COS10001",
+      #   name: "Introduction to Programming",
+      #   convenors: [:acain, :aconvenor],
+      #   teaching_period: TeachingPeriod.first,
+      #   tutors: [
+      #     { user: :acain, num: many_tutorials },
+      #     { user: :aconvenor, num: many_tutorials },
+      #     { user: :ajones, num: many_tutorials },
+      #     { user: :rwilson, num: many_tutorials },
+      #     { user: :acummaudo, num: some_tutorials },
+      #     { user: :atutor, num: many_tutorials },
+      #     { user: :joostfunkekupper, num: many_tutorials },
+      #     { user: :angusmorton, num: some_tutorials },
+      #     { user: :cliff, num: some_tutorials },
+      #   ],
+      #   students: [],
+      #   num_tasks: some_tasks,
+      #   ilos: Faker::Number.between(from: 1, to: 3),
+      # },
       oop: {
         code: "COS20007",
         name: "Object Oriented Programming",
         convenors: [:acain, :aconvenor, :ajones, :acummaudo],
         tutors: [
-          { user: "tutor_1", num: few_tutorials },
-          { user: :angusmorton, num: few_tutorials },
-          { user: :atutor, num: few_tutorials },
-          { user: :joostfunkekupper, num: few_tutorials },
+          { user: "tutor_1", num: many_tutorials },
+          { user: :angusmorton, num: many_tutorials },
+          { user: :atutor, num: many_tutorials },
+          { user: :joostfunkekupper, num: many_tutorials },
         ],
         num_tasks: many_tasks,
         ilos: Faker::Number.between(from: 0, to: 3),
-        students: [:cliff]
+        students: [:atutor]
       },
-      ai4g: {
-        code: "COS30046",
-        name: "Artificial Intelligence for Games",
-        convenors: [:aconvenor],
-        tutors: [
-          { user: :aconvenor, num: few_tutorials },
-          { user: :cliff, num: few_tutorials },
-        ],
-        num_tasks: few_tasks,
-        ilos: Faker::Number.between(from: 0, to: 3),
-        students: [:acummaudo]
-      },
-      gameprog: {
-        code: "COS30243",
-        name: "Game Programming",
-        convenors: [:aconvenor, :acummaudo],
-        tutors: [
-          { user: :aconvenor, num: few_tutorials },
-        ],
-        num_tasks: few_tasks,
-        ilos: Faker::Number.between(from: 0, to: 3),
-        students: [:acain, :ajones]
-      },
+      # ai4g: {
+      #   code: "COS30046",
+      #   name: "Artificial Intelligence for Games",
+      #   convenors: [:aconvenor],
+      #   tutors: [
+      #     { user: :aconvenor, num: few_tutorials },
+      #     { user: :cliff, num: few_tutorials },
+      #   ],
+      #   num_tasks: few_tasks,
+      #   ilos: Faker::Number.between(from: 0, to: 3),
+      #   students: [:acummaudo]
+      # },
+      # gameprog: {
+      #   code: "COS30243",
+      #   name: "Game Programming",
+      #   convenors: [:aconvenor, :acummaudo],
+      #   tutors: [
+      #     { user: :aconvenor, num: few_tutorials },
+      #   ],
+      #   num_tasks: few_tasks,
+      #   ilos: Faker::Number.between(from: 0, to: 3),
+      #   students: [:acain, :ajones]
+      # },
     }
     echo_line "-> Defined #{@user_data.length} fixed users and #{@unit_data.length} units"
   end
